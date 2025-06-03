@@ -11,7 +11,7 @@ ARG DEBIAN_VERSION
 #   apt-get install -y gnupg libpq-dev libzip-dev
 #                      apt-utils libxml2-dev gnupg apt-transport-https
 RUN apt update \
-    && apt -y --no-install-recommends install apt-utils libxml2-dev gnupg apt-transport-https \
+    && apt -y --no-install-recommends install gnupg libicu-dev \
     && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install MS ODBC Driver for SQL Server
@@ -20,7 +20,7 @@ RUN DEBIAN_VERSION=$(cat /etc/debian_version | cut -d. -f1) \
     && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg \
     && curl https://packages.microsoft.com/config/debian/${DEBIAN_VERSION}/prod.list > /etc/apt/sources.list.d/mssql-release.list \
     && apt update \
-    && apt -y --no-install-recommends install msodbcsql17 unixodbc-dev \
+    && apt -y --no-install-recommends install msodbcsql18 unixodbc-dev \
     && pecl install sqlsrv \
     && pecl install pdo_sqlsrv \
     && echo "extension=pdo_sqlsrv.so" >> `php --ini | grep "Scan for additional .ini files" | sed -e "s|.*:\s*||"`/30-pdo_sqlsrv.ini \
