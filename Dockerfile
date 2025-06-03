@@ -9,13 +9,9 @@ ARG DEBIAN_VERSION
 
 # Install selected extensions and other stuff
 #   apt-get install -y gnupg libpq-dev libzip-dev
+#                      apt-utils libxml2-dev gnupg apt-transport-https
 RUN apt update \
     && apt -y --no-install-recommends install apt-utils libxml2-dev gnupg apt-transport-https \
-    && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
-
-# Install git
-RUN apt update \
-    && apt -y install git \
     && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install MS ODBC Driver for SQL Server
