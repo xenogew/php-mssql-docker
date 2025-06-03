@@ -1,0 +1,35 @@
+FROM php:8.4-fpm-bookworm
+WORKDIR /application
+
+ENV ACCEPT_EULA=Y
+
+# Fix debconf warnings upon build
+ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_VERSION
+
+# Install selected extensions and other stuff
+#   apt-get install -y gnupg libpq-dev libzip-dev
+RUN apt update \
+    && apt -y --no-install-recommends install apt-utils libxml2-dev gnupg apt-transport-https \
+    && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Install git
+RUN apt update \
+    && apt -y install git \
+    && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Install MS ODBC Driver for SQL Server
+# RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+RUN DEBIAN_VERSION=$(cat /etc/debian_version | cut -d. -f1) \
+    && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg \
+    && curl https://packages.microsoft.com/config/debian/${DEBIAN_VERSION}/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && apt update \
+    && apt -y --no-install-recommends install msodbcsql17 unixodbc-dev \
+    && pecl install sqlsrv \
+    && pecl install pdo_sqlsrv \
+    && echo "extension=pdo_sqlsrv.so" >> `php --ini | grep "Scan for additional .ini files" | sed -e "s|.*:\s*||"`/30-pdo_sqlsrv.ini \
+    && echo "extension=sqlsrv.so" >> `php --ini | grep "Scan for additional .ini files" | sed -e "s|.*:\s*||"`/30-sqlsrv.ini \
+    && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# Install required extensions
+RUN docker-php-ext-install intl mysqli pdo pdo_mysql
