@@ -7,6 +7,7 @@
   packages = [
     pkgs.php
     pkgs.docker
+    pkgs.docker-compose
     pkgs.nushell
   ];
 

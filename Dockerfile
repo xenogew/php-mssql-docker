@@ -8,8 +8,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG DEBIAN_VERSION
 
 # Install selected extensions and other stuff
-#   apt-get install -y gnupg libpq-dev libzip-dev
-#                      apt-utils libxml2-dev gnupg apt-transport-https
+#   NOTICE: libraries list from `user:webchi` 
+#     gnupg libpq-dev libzip-dev
+#   NOTICE: libraries list from `me`
+#     apt-utils libxml2-dev gnupg apt-transport-https
 RUN apt update \
     && apt -y --no-install-recommends install gnupg libicu-dev \
     && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*

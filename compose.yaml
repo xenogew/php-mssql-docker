@@ -1,0 +1,18 @@
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - '8080:80'
+    volumes:
+      - $PWD/src:/var/www/html
+      - $PWD/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - php-fpm
+
+  php-fpm:
+    image: php-mssql:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - $PWD/src:/var/www/html
