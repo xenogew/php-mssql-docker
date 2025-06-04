@@ -52,3 +52,7 @@ https://gist.github.com/xenogew/3440d323b00e1d661966f2b2ca3ef64a
 *   Update the `mssql/setup.sql` file to modify the database schema or seed data.
 *   Adjust `compose.yaml` to change service configurations, ports, etc.
 *   Customize `.idx/dev.nix` for your development environment setup (if using Nix).
+
+### Evidence
+
+![php-mssql-example](php-mssql-queries.png "Title")
