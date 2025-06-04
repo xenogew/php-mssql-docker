@@ -1,3 +1,5 @@
+# PHP + MSSQL Docker Demo
+
 This project is a simple web application demonstrating the basic structure of a PHP application connected to a SQL database.
 
 > ## ⚠️ NOTICE
