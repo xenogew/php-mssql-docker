@@ -12,7 +12,22 @@ services:
   php-fpm:
     image: php-mssql:latest
     build:
-      context: .
+      context: php
       dockerfile: Dockerfile
     volumes:
       - $PWD/src:/var/www/html
+    links:
+      - mssql
+    depends_on:
+      - mssql
+
+  mssql:
+    image: mssql:2025
+    build:
+      context: mssql
+      dockerfile: Dockerfile
+    environment:
+      MSSQL_SA_PASSWORD: "Sup3rStrongP@ssw0rd"
+      MSSQL_COLLATION: "Latin1_General_100_CI_AS_SC_UTF8"
+    ports:
+      - '1433:1433'
