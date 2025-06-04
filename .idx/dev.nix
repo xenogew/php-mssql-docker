@@ -9,6 +9,7 @@
     pkgs.docker
     pkgs.docker-compose
     pkgs.nushell
+    pkgs.openssh
   ];
 
   services = {

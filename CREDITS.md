@@ -9,5 +9,8 @@ https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?vi
 ## MSSQL Dockerfile example
 https://github.com/microsoft/mssql-docker/tree/master/linux/preview/examples/mssql-customize
 
+## MSSQL - Linux how to setup ODBC driver
+https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver17&tabs=debian18-install%2Calpine17-install%2Cdebian8-install%2Credhat7-13-install%2Crhel7-offline
+
 ## MSSQL collation list
 https://learn.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver17
