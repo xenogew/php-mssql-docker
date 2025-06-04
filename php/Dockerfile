@@ -21,7 +21,6 @@ RUN apt update \
     && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Install MS ODBC Driver for SQL Server
-# RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
 RUN DEBIAN_VERSION=$(cat /etc/debian_version | cut -d. -f1) \
     && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg \
     && curl https://packages.microsoft.com/config/debian/${DEBIAN_VERSION}/prod.list > /etc/apt/sources.list.d/mssql-release.list \
