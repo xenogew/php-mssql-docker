@@ -1,6 +1,7 @@
 services:
   web:
     image: nginx:latest
+    container_name: demo-web
     ports:
       - '8080:80'
     volumes:
@@ -11,6 +12,7 @@ services:
 
   php-fpm:
     image: php-mssql:latest
+    container_name: demo-php
     build:
       context: php
       dockerfile: Dockerfile
@@ -23,6 +25,7 @@ services:
 
   mssql:
     image: mssql:2025
+    container_name: demo-db
     build:
       context: mssql
       dockerfile: Dockerfile
