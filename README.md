@@ -1,7 +1,7 @@
 This project is a simple web application demonstrating the basic structure of a PHP application connected to a SQL database.
 
 > ⚠️ **NOTICE:**
-> This is just a simple setup, and doesn't contain any security best practice, just use as reference and becareful to copy-paste to productin environment.
+> This is just a simple setup, and doesn't contain any security best practice, just use as reference and becareful to copy-paste to production environment.
 >
 > - Dockerfile shouldn't use `root` user
 > - MSSQL18 cmd required encryption layer
