@@ -1,3 +1,39 @@
-Get started by customizing your environment (defined in the .idx/dev.nix file) with the tools and IDE extensions you'll need for your project!
+This project is a simple web application demonstrating the basic structure of a PHP application connected to a SQL database.
 
-Learn more at https://firebase.google.com/docs/studio/customize-workspace
+> ⚠️ **NOTICE:**
+> This is just a simple setup, and doesn't contain any security best practice, just use as reference and becareful to copy-paste to productin environment.
+>
+> - Dockerfile shouldn't use `root` user
+> - MSSQL18 cmd required encryption layer
+
+**Purpose:**
+
+*   To provide a demo of minimal setup example of a PHP application.
+*   To show how to connect PHP to a Microsoft SQL Server database.
+*   To serve as a starting point for building more complex web applications using this stack.
+
+**Getting Started:**
+
+1.  Ensure you have Docker and Docker Compose installed.
+2.  Navigate to the project root directory in your terminal.
+3.  Run `docker compose up --build` to build the images and start the containers (PHP web server and SQL Server).
+4.  The PHP application should be accessible at `http://localhost:8080`.
+5.  The SQL Server database will be running and accessible from the PHP container.
+
+**Project Structure:**
+
+*   `src/`: Contains the PHP source files (`index.php`, `about.php`).
+*   `mssql/`: Contains Dockerfile and scripts for setting up the SQL Server database (`Dockerfile`, `configure-db.sh`, `entrypoint.sh`, `setup.sql`).
+*   `php/`: Contains the Dockerfile for the PHP web server.
+*   `compose.yaml`: Defines the services (PHP and SQL Server) and their configuration using Docker Compose.
+*   `default.conf`: Nginx configuration file for the PHP service.
+*   `.idx/dev.nix`: Development environment configuration (for specific IDE setups).
+*   `.vscode/`: VS Code configuration files.
+*   `CREDITS.md`: Project credits.
+
+**Customization:**
+
+*   Modify the PHP files in `src/` to change the application logic.
+*   Update the `mssql/setup.sql` file to modify the database schema or seed data.
+*   Adjust `compose.yaml` to change service configurations, ports, etc.
+*   Customize `.idx/dev.nix` for your development environment setup (if using Nix).

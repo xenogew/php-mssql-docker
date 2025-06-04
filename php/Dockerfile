@@ -7,11 +7,15 @@ ENV ACCEPT_EULA=Y
 ARG DEBIAN_FRONTEND=noninteractive
 ARG DEBIAN_VERSION
 
-# Install selected extensions and other stuff
+# LEGACY packages that ever installed when last time research of PHP 7.4,
+#        not sure it related to the other factor when run any function,
+#        please check it and confirm by your own envrionment.
 #   NOTICE: libraries list from `user:webchi` 
 #     gnupg libpq-dev libzip-dev
 #   NOTICE: libraries list from `me`
 #     apt-utils libxml2-dev gnupg apt-transport-https
+
+# Install selected extensions and other stuff
 RUN apt update \
     && apt -y --no-install-recommends install gnupg libicu-dev \
     && apt clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*

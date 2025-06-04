@@ -14,3 +14,6 @@ https://learn.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-micr
 
 ## MSSQL collation list
 https://learn.microsoft.com/en-us/sql/relational-databases/collations/collation-and-unicode-support?view=sql-server-ver17
+
+## PHP - Docker another guide to setup
+https://medium.com/novai-php-laravel-101/running-php-using-docker-a-step-by-step-guide-ebfe044fcd43
